@@ -60,6 +60,12 @@ public class HomePage {
 	@FindBy(xpath = "//a[contains(text(),'No Thanks')]")
 	public WebElement noThanks;
 	
+	@FindBy (linkText="No Thanks")
+	public WebElement thanksNoTwo;
+	
+	@FindBy(linkText="No, Thanks")
+	public WebElement thanksNo;
+	
 	@FindBy(xpath ="//a[@id='navToCarValues']")
 	public WebElement carValues;
 	
