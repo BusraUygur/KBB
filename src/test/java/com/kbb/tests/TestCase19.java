@@ -1,6 +1,7 @@
 package com.kbb.tests;
 
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.util.List;
@@ -80,7 +81,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			
 			System.out.println(totalFairPrice.getText());
 			System.out.println(fairPrice.getText());
-			
+			assertEquals(totalFairPrice.getText(), fairPrice.getText());
+
 			
 			//*[@transform='translate(180,113)']//*[@data-reactid='55']
 			
