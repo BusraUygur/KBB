@@ -49,22 +49,25 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			Select modelCarList = new Select(modelList);
 			modelCarList.selectByValue("Aventador");
 			
-			BrowserUtils.waitForVisibility(driver.findElement(By.id("startMyResearchBtn")), 4).click();
+			BrowserUtils.waitForVisibility(driver.findElement(By.id("startMyResearchBtn")), 5).click();
 			
 			driver.findElement(By.id("selectedZipCode")).sendKeys("20148");
 			driver.findElement(By.id("enterzipsubmit")).click();
 			
 			
 			driver.findElement(By.linkText("Coupe")).click();
-			driver.findElement(By.linkText("Compare styles")).click();
-			driver.findElement(By.linkText("Select style")).click();
-			driver.findElement(By.linkText("Price with standard options")).click();
+			BrowserUtils.waitForClickablility(driver.findElement(By.linkText("Compare styles")), 10).click();;
+			BrowserUtils.waitForClickablility(driver.findElement(By.linkText("Select style")), 10).click();
+			BrowserUtils.waitForClickablility(driver.findElement(By.linkText("Price with standard options")),10).click();
 			
-			WebElement totalFairPrice=driver.findElement(By.id("configuredPrice"));
-			WebElement fairPrice=driver.findElement(By.xpath(""));
+			WebElement totalFairPrice=driver.findElement(By.xpath("configuredPrice"));
+			WebElement fairPrice=driver.findElement(By.xpath("//*[@transform='translate(180,113)']//*[@data-reactid='55']"));
 			
 			System.out.println(totalFairPrice.getText());
 			System.out.println(fairPrice.getText());
+			
+			
+			//*[@transform='translate(180,113)']//*[@data-reactid='55']
 			
 			
 			
