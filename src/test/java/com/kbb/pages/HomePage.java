@@ -9,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.kbb.utilities.Driver;
 
+
+
 public class HomePage {
 
 	private WebDriver driver;
@@ -95,6 +97,103 @@ public class HomePage {
 	
 	@FindBy(xpath = "(//*[@text-anchor='middle'])[1]")
 	public WebElement frameFairPurchasePrice;
+	
+	
+	
+	@FindBy(className="logo-home-link")
+	public WebElement checkLogo;
+
+	
+	@FindBy(id="entryPointShopper")
+	public WebElement Price_NewUsedOption;
+	
+	
+	@FindBy(id="intentDropdown0")
+	public WebElement dropdown;
+	
+	
+	@FindBy(xpath="//a[@id='startMyResearchBtn']")
+	public WebElement next;
+	
+	@FindBy(xpath="(//a[@class='btn-main-cta noyear'])[2]")
+	public WebElement select2017;
+	
+	@FindBy(xpath="//input[@id='selectedZipCode']")
+	public WebElement EnterZip;
+	
+   @FindBy(xpath="//a[@id='enterzipsubmit']")
+   public WebElement save;
+   
+   @FindBy(xpath="(//span[@class='btn-circle-plus'])[1]")
+   public WebElement BaseButton;
+   
+   @FindBy(xpath="(//a[@class='right btn-main-cta'])[2]")
+   public WebElement ChooseThisStyleButton;
+   
+   @FindBy(xpath="(//a[@title='Research Tools'])[1]")
+   public WebElement researchTool;
+   
+   @FindBy(xpath="//a[@id='navToResearchToolsnavToCompareCars']")
+   public WebElement CompareCars;
+   
+ 
+   
+   @FindBy(xpath="//input[@id='selectedZipCode']")
+   public WebElement zipagain;
+   
+   @FindBy(id="enterzipsubmit")
+   public WebElement savaAgain;
+   
+    @FindBy(xpath="(//input[@type='radio'])[2]")
+   public WebElement defaltNewSelected;
+    
+    @FindBy(xpath="//a[@title='Click to close.']")
+    public WebElement allerHandl;
+    
+    @FindBy(xpath="//select[@id='noresultsmake']")
+    public WebElement selectMakeOption;
+    
+    @FindBy(xpath="(//select[@id='noresultsmodel'])[1]")
+    public WebElement chooseSmodel;
+    
+    @FindBy(xpath="//select[@id='noresultsyear']")
+    public WebElement chooseYear2017;
+    
+    @FindBy(xpath="//*[@class='addButtonStyleBlue btn-secondary-cta']")
+    public WebElement ClikcOnAddButton;
+    
+  
+    
+   @FindBy(xpath="//input[@value='NewCar']")
+   public WebElement DefaultButtonOfBentley;
+    
+   public WebElement noresultsmake;
+   
+   public WebElement noresultsmodel;
+   public WebElement noresultsyear;
+   
+   @FindBy(xpath="//a[@class='addButtonStyleBlue btn-secondary-cta']")
+   public WebElement clickOnAddButtonOfBentley;
+   
+   public WebElement noresultsusedyear;
+   
+   
+  @FindBy(xpath="(//input[@type='radio'])[2]")
+  public WebElement redioButtonOfBMW;
+   
+  @FindBy(xpath="(//select[@name='yearId'])[2]")
+  public WebElement selectYearOfBMW;
+    
+  @FindBy(xpath="//select[@id='noresultsusedmake']")
+  public WebElement selectModelOfBMW;
+  
+  @FindBy(xpath="//select[@id='noresultsusedmodel']")
+  public WebElement selectM5;
+  
+  @FindBy(xpath="//select[@id='noresultsusedtrim']")
+  public WebElement chooseTrim;
+  
+
 	//*[@text-anchor='middle'][@font-size='14'][@font-weight='700'])[1]
 	
 	

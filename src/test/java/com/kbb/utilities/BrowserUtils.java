@@ -10,6 +10,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -18,7 +19,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BrowserUtils {
 
-	private static WebDriver driver = Driver.getDriver();
+	private static WebDriver driver;
+
+	public static WebDriver initDriver() {
+
+		driver = new ChromeDriver();
+        driver.get(ConfigurationReader.getProperty("url"));
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        return driver;
+	}
 
 	public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
 		WebDriverWait wait = new WebDriverWait(driver, timeToWaitInSec);
@@ -85,15 +95,34 @@ public class BrowserUtils {
 		}
 		driver.switchTo().window(origin);
 	}
+	public static WebElement findElementById(String id) {
+		return driver.findElement(By.id(id));
+	}
+	public static WebElement findElementByClassName(String className) {
+		return driver.findElement(By.className(className));
+	}
+	public static WebElement findElementByCss(String selector) {
+		return driver.findElement(By.cssSelector(selector));
+	}
+	public static WebElement findElementByXpath(String xpath) {
+		WebElement wb  = null;
+		try {
+			driver.findElement(By.xpath(xpath));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return wb;
+	}
 
-//	public static List<String> getElementsText(By locator) {
-//		List<WebElement> elems = driver.findElements(locator);
-//		List<String> elemTexts = new ArrayList<>();
-//		for (WebElement el : elems) {
-//			if (!el.getText().isEmpty()) {
-//				elemTexts.add(el.getText());
-//			}
-//		}
-//		return elemTexts;
-//	}
+	public static List<String> getElementsText(By locator) {
+		List<WebElement> elems = driver.findElements(locator);
+		List<String> elemTexts = new ArrayList<>();
+		for (WebElement el : elems) {
+			if (!el.getText().isEmpty()) {
+				elemTexts.add(el.getText());
+			}
+		}
+		return elemTexts;
+	}
 }
