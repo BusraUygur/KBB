@@ -1,11 +1,13 @@
 package com.kbb.tests;
 
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -48,23 +50,43 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			WebElement modelList = driver.findElement(By.id("modelDropdown0"));
 			Select modelCarList = new Select(modelList);
 			modelCarList.selectByValue("Aventador");
-			
-			BrowserUtils.waitForVisibility(driver.findElement(By.id("startMyResearchBtn")), 4).click();
+			Thread.sleep(2000);
+			driver.findElement(By.id("startMyResearchBtn")).click();
 			
 			driver.findElement(By.id("selectedZipCode")).sendKeys("20148");
 			driver.findElement(By.id("enterzipsubmit")).click();
 			
 			
 			driver.findElement(By.linkText("Coupe")).click();
-			driver.findElement(By.linkText("Compare styles")).click();
+			
+			JavascriptExecutor jsEX = (JavascriptExecutor) driver;
+			jsEX.executeScript("window.scrollBy(0,200);");
+			Thread.sleep(2000);
+			
+			BrowserUtils.waitForClickablility(driver.findElement(By.linkText("Compare styles")),15).click();
+			
+			JavascriptExecutor jsEX1 = (JavascriptExecutor) driver;
+			jsEX.executeScript("window.scrollBy(0,200);");
+			Thread.sleep(2000);
+			
 			driver.findElement(By.linkText("Select style")).click();
 			driver.findElement(By.linkText("Price with standard options")).click();
 			
-			WebElement totalFairPrice=driver.findElement(By.id("configuredPrice"));
-			WebElement fairPrice=driver.findElement(By.xpath(""));
+			homepage.thanksNo.click();
+			Thread.sleep(2000);
+			homepage.thanksNoTwo.click();
+			
+			WebElement totalFairPrice=driver.findElement(By.xpath("configuredPrice"));
+			WebElement fairPrice=driver.findElement(By.xpath("//*[@transform='translate(180,113)']//*[@data-reactid='55']"));
 			
 			System.out.println(totalFairPrice.getText());
 			System.out.println(fairPrice.getText());
+			assertEquals(totalFairPrice.getText(), fairPrice.getText());
+
+			
+			//*[@transform='translate(180,113)']//*[@data-reactid='55']
+			
+			System.out.println("final updated");
 			
 			
 			

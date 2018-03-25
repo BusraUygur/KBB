@@ -1,6 +1,9 @@
 package com.kbb.tests;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,8 +38,23 @@ public class TestCase18 {
 		driver.findElement(By.id("selectedZipCode")).sendKeys("20148");
 		driver.findElement(By.id("enterzipsubmit")).click();
 		
+		JavascriptExecutor jsEX = (JavascriptExecutor) driver;
+		jsEX.executeScript("window.scrollBy(0,800);");
+		Thread.sleep(2000);
 		
 		BrowserUtils.waitForClickablility(driver.findElement(By.linkText("Electric")), 5).click();
+		
+		List<WebElement> findElements = driver.findElements(By.xpath("//div[@id='compSideGrid']//table//tr[8]//td"));
+		
+		for (WebElement webElement : findElements) {
+			if (webElement.getText().contains("Electric)")){
+			}
+			
+		}
+		
+		System.out.println("final two updated");
+		
+	
 		
 		
 		
