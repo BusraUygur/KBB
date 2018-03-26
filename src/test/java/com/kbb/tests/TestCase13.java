@@ -19,6 +19,11 @@ public class TestCase13 extends TestBase {
 
 	@Test
 	public void test() throws InterruptedException {
+		
+		String title = driver.getTitle();
+		String expectedTitle = "Kelley Blue Book | New and Used Car Price Values, Expert Car Reviews";
+		Assert.assertEquals(title, expectedTitle);
+		
 		HomePage homepage = new HomePage();
 		Actions actions = new Actions(driver);
 		actions.moveToElement(homepage.hoverToResearchTools).perform();
@@ -31,38 +36,33 @@ public class TestCase13 extends TestBase {
 
 		JavascriptExecutor jsEX = (JavascriptExecutor) driver;
 		jsEX.executeScript("window.scrollBy(0,400);");
-		Thread.sleep(2000);
 
 		WebElement list = homepage.selectMake;
 		Select select = new Select(list);
 		select.selectByIndex(2);
-		Thread.sleep(1000);
 
 		list = homepage.selectModel;
 		select = new Select(list);
 		select.selectByIndex(1);
-		Thread.sleep(1000);
 
 		list = homepage.selectYear;
 		select = new Select(list);
 		select.selectByIndex(1);
-		Thread.sleep(1000);
 
 		list = homepage.selectTrim;
 		select = new Select(list);
 		select.selectByIndex(1);
-		Thread.sleep(1000);
 
 		homepage.add.click();
 		Thread.sleep(2000);
-		
+
 		homepage.tryCatch(homepage.popUp);
 
 		homepage.overviewAndPricingButton.click();
 		Thread.sleep(2000);
 
-		String title = driver.getTitle();
-		String expectedTitle = "2017 Alfa Romeo 4C New Car Prices | Kelley Blue Book";
+		title = driver.getTitle();
+		expectedTitle = "2017 Alfa Romeo 4C New Car Prices | Kelley Blue Book";
 		Assert.assertEquals(title, expectedTitle);
 		Thread.sleep(2000);
 
@@ -72,10 +72,8 @@ public class TestCase13 extends TestBase {
 
 		WebElement frame = homepage.noThanks;
 		frame.click();
-		Thread.sleep(2000);
 
 		jsEX.executeScript("window.scrollBy(0,1000);");
-		Thread.sleep(2000);
 
 		System.out.println(homepage.totalFairPurchasePrice.getText());
 

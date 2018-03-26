@@ -14,15 +14,14 @@ import org.testng.annotations.Test;
 import com.kbb.pages.HomePage;
 import com.kbb.utilities.BrowserUtils;
 import com.kbb.utilities.ConfigurationReader;
+import com.kbb.utilities.TestBase;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TestCase18 {
+public class TestCase18 extends TestBase{
 	@Test
 	public void testListedCars() throws InterruptedException {
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
-		driver.get(ConfigurationReader.getProperty("url"));
+		
 		String title = driver.getTitle();
 		String expectedTitle = "Kelley Blue Book | New and Used Car Price Values, Expert Car Reviews";
 		Assert.assertEquals(title, expectedTitle);
@@ -42,8 +41,8 @@ public class TestCase18 {
 		jsEX.executeScript("window.scrollBy(0,800);");
 		Thread.sleep(2000);
 		
-		BrowserUtils.waitForClickablility(driver.findElement(By.linkText("Electric")), 5).click();
-		
+		driver.findElement(By.xpath("(//div[@id='compareCategoriesNew']//a[@class='link_arrow_blue'])[8]")).click();
+
 		List<WebElement> findElements = driver.findElements(By.xpath("//div[@id='compSideGrid']//table//tr[8]//td"));
 		
 		for (WebElement webElement : findElements) {

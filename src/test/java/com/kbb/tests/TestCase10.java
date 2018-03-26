@@ -14,17 +14,15 @@ import org.testng.annotations.Test;
 
 import com.kbb.pages.HomePage;
 import com.kbb.utilities.ConfigurationReader;
+import com.kbb.utilities.TestBase;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TestCase10 {
-
+public class TestCase10 extends TestBase {
 
 	@Test
 	public void setUp() throws InterruptedException {
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
-		driver.get(ConfigurationReader.getProperty("url"));
+
 		String title = driver.getTitle();
 		String expectedTitle = "Kelley Blue Book | New and Used Car Price Values, Expert Car Reviews";
 		Assert.assertEquals(title, expectedTitle);
@@ -34,14 +32,9 @@ public class TestCase10 {
 		Actions actions = new Actions(driver);
 		WebElement element = driver.findElement(By.xpath("//a[@id='navToResearchTools']"));
 
-		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
 		actions.moveToElement(element).perform();
 
 		driver.findElement(By.linkText("Compare Cars")).click();
-
-		// WebElement iframe = driver.findElement(By.id("overlaybackground"));
-		// driver.switchTo().frame(iframe);
 
 		Thread.sleep(2000);
 		driver.findElement(By.id("selectedZipCode")).sendKeys("20148");
@@ -97,8 +90,8 @@ public class TestCase10 {
 
 		WebElement listYearForBentley = driver.findElement(By.xpath("//select[@id='noresultsyear']"));
 		Select select4 = new Select(listYearForBentley);
-		// select4.getFirstSelectedOption();
-		select4.selectByValue("2017"); //xxxxss
+
+		select4.selectByValue("2017");
 
 		driver.findElement(By.xpath("//*[@class='addButtonStyleBlue btn-secondary-cta']")).click();
 
@@ -116,16 +109,14 @@ public class TestCase10 {
 
 		String actualEE = driver.findElement(By.xpath("//*[@class='link_arrow_blue lnkVehName']")).getText();
 		String exepectedEE = "New: 2017 Tesla Model S";
-		
-		Assert.assertEquals(actualEE, exepectedEE); //d
+
+		Assert.assertEquals(actualEE, exepectedEE);
 
 		String actualBent = driver.findElement(By.linkText("New: 2017 Bentley Continental")).getText();
 		String exepectedEB = "New: 2017 Bentley Continental";
-		
-		Assert.assertEquals(actualBent, exepectedEB);
 
+		Assert.assertEquals(actualBent, exepectedEB);
 
 	}
 
-	
 }

@@ -10,11 +10,11 @@ public class TestCase_1_2 extends TestBase {
 
 	@Test
 	public void test() {
-		HomePage homepage=new HomePage();
-		Actions action=new Actions(driver);
+		HomePage homepage = new HomePage();
+		Actions action = new Actions(driver);
 		action.moveToElement(homepage.carValues).perform();
-		
+
 		homepage.newAndUsedCarPrices.click();
-		
+
 	}
 }
