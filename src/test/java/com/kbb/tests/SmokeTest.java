@@ -65,6 +65,10 @@ public class SmokeTest extends TestBase {
 		Select select3 = new Select(listYear);
 		select3.selectByValue("2017");
 
+		WebElement listTrim = driver.findElement(By.xpath("//select[@id='noresultstrim']"));
+		Select select6 = new Select(listTrim);
+		select6.selectByIndex(1);
+				
 		driver.findElement(By.xpath("//*[@class='addButtonStyleBlue btn-secondary-cta']")).click();
 
 		String actualCompareCareTitle = driver.getTitle();
@@ -92,8 +96,11 @@ public class SmokeTest extends TestBase {
 
 		WebElement listYearForBentley = driver.findElement(By.xpath("//select[@id='noresultsyear']"));
 		Select select4 = new Select(listYearForBentley);
-
 		select4.selectByValue("2017");
+		
+		WebElement listTrimForBentley = driver.findElement(By.xpath("//select[@id='noresultstrim']"));
+		Select select7 = new Select(listTrimForBentley);
+		select7.selectByIndex(1);
 
 		driver.findElement(By.xpath("//*[@class='addButtonStyleBlue btn-secondary-cta']")).click();
 

@@ -64,7 +64,6 @@ public class TestCase13 extends TestBase {
 		title = driver.getTitle();
 		expectedTitle = "2017 Alfa Romeo 4C New Car Prices | Kelley Blue Book";
 		Assert.assertEquals(title, expectedTitle);
-		Thread.sleep(2000);
 
 		WebElement fr = homepage.surveyIframe;
 		driver.switchTo().frame(fr);
