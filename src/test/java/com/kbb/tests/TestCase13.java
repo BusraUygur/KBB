@@ -53,7 +53,7 @@ public class TestCase13 extends TestBase {
 		select = new Select(list);
 		select.selectByIndex(1);
 
-		homepage.add.click();
+		homepage.add.click();  
 		Thread.sleep(2000);
 
 		homepage.tryCatch(homepage.popUp);
