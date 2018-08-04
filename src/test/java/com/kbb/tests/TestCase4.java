@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 import com.kbb.pages.HomePage;
 import com.kbb.utilities.TestBase;
 
-public class TestCase3 extends TestBase {
+public class TestCase4 extends TestBase{
 	
 	@Test
-	public void setUp() throws InterruptedException  {
+	public void setUp()  {
 		;
 		String title = driver.getTitle();
 		String expectedTitle = "Kelley Blue Book | New and Used Car Price Values, Expert Car Reviews";
@@ -30,19 +30,12 @@ public class TestCase3 extends TestBase {
 		Select select = new Select(list);
 		select.selectByIndex(0);
 		
-		WebElement selectMake = driver.findElement(By.xpath("//select[@id='makeDropdown0']"));
-		Select select2 = new Select(selectMake);
-		select2.selectByValue("Tesla");
 		
 		WebElement listModel = driver.findElement(By.xpath("//select[@id='modelDropdown0']"));
 		Select select3 = new Select(listModel);
-		select3.selectByValue("Model S");
+		select3.selectByValue("Model");
 		homepage.next.click();
-		
-		Thread.sleep(2000);
-		driver.findElement(By.id("selectedZipCode")).sendKeys("20148");
-		driver.findElement(By.id("enterzipsubmit")).click();
-		
 
 }
 }
+
